@@ -5,9 +5,19 @@ return the index as soon as it's found
 (though can a peak exist at the end?)
 */
 
+// 1st attempt
+// const peakIndexInMountainArray = A => {
+//   for(let i = 1; i < A.length; i++) {
+//     if(A[i] > A[i - 1] && A[i] > A[i + 1]){
+//       return i
+//     }
+//   }
+// };
+
+// 2nd Attempt
 const peakIndexInMountainArray = A => {
-  for(let i = 1; i < A.length; i++) {
-    if(A[i] > A[i - 1] && A[i] > A[i + 1]){
+  for (let i = 1; i < A.length; i++) {
+    if (A[i + 1] < A[i]) {
       return i
     }
   }
