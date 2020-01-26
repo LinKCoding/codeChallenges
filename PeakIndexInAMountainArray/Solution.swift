@@ -2,15 +2,16 @@ class Solution {
   func peakIndexInMountainArray(_ A: [Int]) -> Int {
     for num in 1..<A.count {
       if A[num + 1] < A[num] {
-        return A
+        return num
       }
     }
+    return 0
   }
 }
 
 var testSol = Solution()
 
-print(testSol.peakIndexInMountainArray([]))
+print(testSol.peakIndexInMountainArray([0,1,2, 1, 0]))
 
 // Example 1:
 
