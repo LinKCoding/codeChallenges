@@ -15,12 +15,17 @@ return the index as soon as it's found
 // };
 
 // 2nd Attempt
+// const peakIndexInMountainArray = A => {
+//   for (let i = 1; i < A.length; i++) {
+//     if (A[i + 1] < A[i]) {
+//       return i
+//     }
+//   }
+// };
+
+// 3rd Attempt (cheeky)
 const peakIndexInMountainArray = A => {
-  for (let i = 1; i < A.length; i++) {
-    if (A[i + 1] < A[i]) {
-      return i
-    }
-  }
+  return A.indexOf(Math.max(...A))
 };
 
 console.log(peakIndexInMountainArray([0, 1, 2, 1, 0]))
