@@ -8,14 +8,45 @@ var CombinationIterator = function (characters, combinationLength) {
   for(let i = 0; i < combinationLength; i++) {
     this.arrayTracker[i] = i
   }
+  this.arrLen = this.arrayTracker.length
   this.characters = characters
+  this.charLength = characters.length
+  this.comboLength = combinationLength
 };
 
+// 
+CombinationIterator.prototype.nextComboArray = function () {
+  if (this.arrayTracker[this.arrLen - 1] != this.charLength - 1) {
+    
+    this.arrayTracker[this.arrLen - 1]++
+  } else {
+    let findNext = this.arrLen - 1
+    // Something's wrong here, going too far back...
+    while (findNext > 0 && this.arrayTracker[findNext] + 1 !== findNext) {
+      findNext--
+    }
+
+    if (this.arrayTracker[findNext] !== this.charLength - this.comboLength) {
+      let nextValue = this.arrayTracker[findNext] + 1
+      // console.log(this.arrayTracker[findNext])
+      for (let i = findNext; i < this.arrLen; i++) {
+        // console.log("next value is:", nextValue, i)
+        this.arrayTracker[i] = nextValue
+        nextValue++
+      }
+    }
+    
+  }
+}
 /**
  * @return {string}
  */
 CombinationIterator.prototype.next = function () {
+  const returnString = this.arrayTracker.map(idx => this.characters[idx]).join("")
+  for(let i = this.comboLength - 1; i >= 0; i--) {
 
+  }
+  return returnString
 };
 
 
@@ -34,10 +65,10 @@ CombinationIterator.prototype.hasNext = function () {
  */
 
 
-let test = new CombinationIterator("abc", 2)
-console.log(test.startCounter)
-test.next()
-test.next()
-test.next()
-test.next()
-console.log(test.startCounter)
+let test = new CombinationIterator("abcde", 3)
+for(let i = 0; i < 9; i++){
+  console.log(`on iteration #${i}`)
+  console.log(test.arrayTracker)
+  test.nextComboArray()
+}
+
