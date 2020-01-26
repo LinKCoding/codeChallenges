@@ -1,31 +1,23 @@
 /* Thoughts:
-Can I change this to a class? 
-Need to use closure? No.
-I need a way to keep track of the start element
-Use `this` keyword
-What returns when I reach the end of the characters?
-
+Start with a function to create all combinations? 
+Or start and end counter?
+That works well with combinations of 2... but what about when combos get longer? 
 */
 var CombinationIterator = function (characters, combinationLength) {
-  this.startCounter = 0 
+  this.arrayTracker = []
+  for(let i = 0; i < combinationLength; i++) {
+    this.arrayTracker[i] = i
+  }
   this.characters = characters
-  this.increment = combinationLength
 };
-
-let test = new CombinationIterator("abc", 2)
-console.log(test.startCounter)
-
 
 /**
  * @return {string}
  */
 CombinationIterator.prototype.next = function () {
-  this.startCounter++
-  console.log(this.startCounter)
+
 };
 
-test.next()
-console.log(test.startCounter)
 
 /**
  * @return {boolean}
@@ -40,3 +32,12 @@ CombinationIterator.prototype.hasNext = function () {
  * var param_1 = obj.next()
  * var param_2 = obj.hasNext()
  */
+
+
+let test = new CombinationIterator("abc", 2)
+console.log(test.startCounter)
+test.next()
+test.next()
+test.next()
+test.next()
+console.log(test.startCounter)
