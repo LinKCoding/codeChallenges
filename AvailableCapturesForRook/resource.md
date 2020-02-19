@@ -6,45 +6,52 @@
 
 ## Prompt:
 
- Given a list of sorted characters letters containing only lowercase letters, and given a target letter target, find the smallest element in the list that is larger than the given target.
+ On an 8 x 8 chessboard, there is one white rook.  There also may be empty squares, white bishops, and black pawns.  These are given as characters 'R', '.', 'B', and 'p' respectively. Uppercase characters represent white pieces, and lowercase characters represent black pieces.
 
-Letters also wrap around. For example, if the target is target = 'z' and letters = ['a', 'b'], the answer is 'a'.
+ Input: 
+ [[".",".",".",".",".",".",".","."],
+  [".",".",".","p",".",".",".","."],
+  [".",".",".","R",".",".",".","p"],
+  [".",".",".",".",".",".",".","."],
+  [".",".",".",".",".",".",".","."],
+  [".",".",".","p",".",".",".","."],
+  [".",".",".",".",".",".",".","."],
+  [".",".",".",".",".",".",".","."]]
 
-Examples:
+Output: 3
+Explanation: 
+In this example the rook is able to capture all the pawns.
 
-```
-Input:
-letters = ["c", "f", "j"]
-target = "a"
-Output: "c"
+ Input: 
+ [[".",".",".",".",".",".",".","."],
+  [".","p","p","p","p","p",".","."],
+  [".","p","p","B","p","p",".","."],
+  [".","p","B","R","B","p",".","."],
+  [".","p","p","B","p","p",".","."],
+  [".","p","p","p","p","p",".","."],
+  [".",".",".",".",".",".",".","."],
+  [".",".",".",".",".",".",".","."]]
+Output: 0
+Explanation: 
+Bishops are blocking the rook to capture any pawn.
 
-Input:
-letters = ["c", "f", "j"]
-target = "c"
-Output: "f"
 
-Input:
-letters = ["c", "f", "j"]
-target = "d"
-Output: "f"
+Input: 
+[[".",".",".",".",".",".",".","."],
+ [".",".",".","p",".",".",".","."],
+ [".",".",".","p",".",".",".","."],
+ ["p","p",".","R",".","p","B","."],
+ [".",".",".",".",".",".",".","."],
+ [".",".",".","B",".",".",".","."],
+ [".",".",".","p",".",".",".","."],
+ [".",".",".",".",".",".",".","."]]
+Output: 3
+Explanation: 
+The rook can capture the pawns at positions b5, d6 and f5.
 
-Input:
-letters = ["c", "f", "j"]
-target = "g"
-Output: "j"
-
-Input:
-letters = ["c", "f", "j"]
-target = "j"
-Output: "c"
-
-Input:
-letters = ["c", "f", "j"]
-target = "k"
-Output: "c"
-```
 
 ### Note:
-letters has a length in range [2, 10000].
-letters consists of lowercase letters, and contains at least 2 unique letters.
-target is a lowercase letter.
+
+    board.length == board[i].length == 8
+    board[i][j] is either 'R', '.', 'B', or 'p'
+    There is exactly one cell with board[i][j] == 'R'
