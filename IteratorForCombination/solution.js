@@ -17,19 +17,19 @@ var CombinationIterator = function (characters, combinationLength) {
 // 
 CombinationIterator.prototype.nextComboArray = function () {
   if (this.arrayTracker[this.arrLen - 1] != this.charLength - 1) {
-    
     this.arrayTracker[this.arrLen - 1]++
   } else {
-    let findNext = this.arrLen - 1
+    let findNextIdx = this.arrLen - 1
     // Something's wrong here, going too far back...
-    while (findNext > 0 && this.arrayTracker[findNext] + 1 !== findNext) {
-      findNext--
+    while (findNextIdx > 0 && this.arrayTracker[findNextIdx] + 1 === findNextIdx) {
+      console.log(this.arrayTracker[findNextIdx] + 1, findNextIdx)
+      findNextIdx--
     }
 
-    if (this.arrayTracker[findNext] !== this.charLength - this.comboLength) {
-      let nextValue = this.arrayTracker[findNext] + 1
-      // console.log(this.arrayTracker[findNext])
-      for (let i = findNext; i < this.arrLen; i++) {
+    if (this.arrayTracker[findNextIdx] !== (this.charLength - this.comboLength)) {
+      let nextValue = this.arrayTracker[findNextIdx] + 1
+      // console.log(this.arrayTracker[findNextIdx])
+      for (let i = findNextIdx; i < this.arrLen; i++) {
         // console.log("next value is:", nextValue, i)
         this.arrayTracker[i] = nextValue
         nextValue++
