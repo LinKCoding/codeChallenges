@@ -10,21 +10,14 @@ const rotateString = (A, B) => {
       break
     }
   }
-
-  console.log("i is:", i)
-  console.log("latter string is:", B.substring(0, B.length - i));
-  // console.log(A.substring(i, A.length));
   
-  if(B.substring(0, B.length - i) === A.substring(i, A.length)) {
-    return true
-  }
-  return false
+  return B.substring(0, B.length - i) === A.substring(i, A.length)
 };
 
 
 // let A = 'abcde', B = 'cdeab' // true
-let A = 'abcde', B = 'abced' // false
-// let A = 'abcde', B = 'deabc' // true
+// let A = 'abcde', B = 'abced' // false
+let A = 'abcde', B = 'deabc' // true
 
 // console.log()
 
